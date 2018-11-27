@@ -68,6 +68,20 @@ const template = {
             sshKeyName: 'YOUR SSH KEY (could be: mykey)',
             plan: 'YOUR PLAN (could be: small)',
         },
+        {
+            type: 'gcloudcompute',
+            projectId: 'YOUR GOOGLE PROJECT NAME',
+            credentials: {
+              clientEmail: "SERVICE ACCOUNT CLIENT EMAIL (e.g. 1234567890-compute@developer.gserviceaccount.com)",
+              privateKey: "SERVICE ACCOUNT PRIVATE KEY"
+            },
+            instance: {
+              region: "REGION (e.g. us-west-1 or random)",
+              imageName: "NAME OF VM IMAGE",
+              machineType: "MACHINE TYPE (e.g. n1-standard-1)",
+              tags: "TAGS SEPARATED BY A COMMA (e.g. my-proxies,my-instances)"
+            }
+        }
     ]
 };
 

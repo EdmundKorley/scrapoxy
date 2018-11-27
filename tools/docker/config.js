@@ -150,6 +150,28 @@ function getProvidersByType() {
             }];
         }
 
+        case 'gcloudcompute': {
+          let max;
+          if (process.env.PROVIDERS_GCLOUDCOMPUTE_MAX) {
+            max = parseInt(process.env.PROVIDERS_GCLOUDCOMPUTE_MAX);
+          }
+
+          return [{
+              type: 'gcloudcompute',
+              projectId: process.env.PROVIDERS_GCLOUDCOMPUTE_PROJECTID,
+              credentials: {
+                clientEmail: process.env.PROVIDERS_GCLOUDCOMPUTE_CLIENTEMAIL,
+                privateKey: process.env.PROVIDERS_GCLOUDCOMPUTE_PRIVATEKEY,
+              },
+              instance: {
+                region: process.env.PROVIDERS_GCLOUDCOMPUTE_REGION,
+                imageName: process.env.PROVIDERS_GCLOUDCOMPUTE_IMAGENAME,
+                machineType: process.env.PROVIDERS_GCLOUDCOMPUTE_MACHINETYPE,
+                tags: process.env.PROVIDERS_GCLOUDCOMPUTE_TAGS,
+              }
+          }]
+        }
+
         default: {
             throw new Error(`Unknown provider: ${providerType}`);
         }
